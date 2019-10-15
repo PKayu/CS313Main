@@ -24,7 +24,7 @@ CREATE TABLE "Snowball"."Debt"
     remaining_amount double precision NOT NULL,
     fk_user_id integer,
     PRIMARY KEY (debt_id),
-    CONSTRAINT user_id FOREIGN KEY (debt_id)
+    CONSTRAINT user_id FOREIGN KEY (fk_user_id)
         REFERENCES "Snowball"."Users" (user_id) MATCH SIMPLE
         ON UPDATE CASCADE
         ON DELETE CASCADE
