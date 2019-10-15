@@ -56,9 +56,9 @@ catch (PDOException $ex)
                 <tr><th>Debt Name</th><th>Minimum Payment</th><th>Remaining Debt</th></tr>
                 <?php
                 foreach ($_SESSION["debt"] AS $debt) {
-                    echo '<tr id=\"debtID-'. $debt["debt_id"] .'\"><td><input type=\"text\" name=\"debt_name\" value=\"'. $debt["debt_name"] .'\">' . '</td>'
-                        .'<td><input type=\"text\" name=\"minimum_payment\" value=\"'. $debt["minimum_payment"] .'\">'. '</td>'
-                        .'<td><input type=\"text\" name=\"remaining_amount\" value=\"'. $debt["remaining_amount"] .'\">' . '</td></tr>';
+                    echo '<tr id=\"debtID-'. $debt["debt_id"] .'\"><td><input type=\"text\" name=\"debt_name\" value='. $debt["debt_name"] .'>' . '</td>'
+                        .'<td><input type="text" name="minimum_payment" value='. $debt["minimum_payment"] .'>'. '</td>'
+                        .'<td><input type="text" name="remaining_amount" value='. $debt["remaining_amount"] .'>' . '</td></tr>';
                 }
                 ?>
             </table>
