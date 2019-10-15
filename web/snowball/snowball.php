@@ -64,8 +64,10 @@ catch (PDOException $ex)
                     $cnt++;
                 }
                 ?>
+                <tr><td></td><td id="sumPayment"></td><td id="sumAmount"></td><td></td></tr>
             </table>
             <a href="">Add Row</a>
+            <br>
             <br>
             <button name="calculate" onclick="calculate()">Snowball!</button>
         </div>

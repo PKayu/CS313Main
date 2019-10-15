@@ -16,9 +16,10 @@
 }
 
 function calculate() {
-	var debtRemaining = document.getElementsByClassName("remaining_amount");
-	for (var i = 1, row; row = debtRemaining.rows[i]; i++) {
-		var rowOne = row;
-
+	var remaining_amounts = document.getElementsByClassName("remaining_amount");
+	var debtRemaining = 0;
+	for (var index = 1; index < remaining_amounts.length; i++) {
+		debtRemaining += remaining_amounts[index].value;
 	}
+	document.getElementById("sumAmount").value = debtRemaining;
 }
