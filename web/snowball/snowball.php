@@ -27,7 +27,7 @@ include "header.php";
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             echo 'Successfully Connected!';
 
-            foreach ($db->query('SELECT * FROM users') as $row)
+            foreach ($db->query('SELECT * FROM "Snowball"."Users"') as $row)
             {
                 echo 'user ID: ' . $row['user_id'];
                 echo ' <br/> Name: ' . $row['first_name'] . ' ' . $row['last_name'];
