@@ -40,15 +40,15 @@ function calculate() {
 	var remaining_amounts = document.getElementsByClassName("remaining_amount");
 	var debtRemaining = 0;
 	for (var index = 0; index < remaining_amounts.length; index++) {
-		debtRemaining += parseFloat(remaining_amounts[index].value.toFixed(2));
+		debtRemaining += parseFloat(remaining_amounts[index].value);
 	}
-	document.getElementById("sumAmount").value = debtRemaining;
+	document.getElementById("sumAmount").value = debtRemaining.toFixed(2);
 
 	//sum minimum payments
 	var minimumPayments = document.getElementsByClassName("minimum_payment");
 	var totalMinimumPayments = 0;
 	for (var index = 0; index < minimumPayments.length; index++) {
-		totalMinimumPayments +=  parseFloat(minimumPayments[index].value.toFixed(2));
+		totalMinimumPayments +=  parseFloat(minimumPayments[index].value);
 	}
-	document.getElementById("sumPayment").value = totalMinimumPayments;
+	document.getElementById("sumPayment").value = totalMinimumPayments.toFixed(2);
 }
