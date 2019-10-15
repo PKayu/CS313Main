@@ -16,8 +16,8 @@
 }
 
 function calculate() {
-	var debtTable = document.getElementById("debtTable");
-	for (var i = 0, row; row = debtTable.rows[i]; i++) {
+	var debtRemaining = document.getElementsByClassName("remaining_amount");
+	for (var i = 1, row; row = debtRemaining.rows[i]; i++) {
 		var rowOne = row;
 
 	}
