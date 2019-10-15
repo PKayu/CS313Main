@@ -23,11 +23,13 @@ try
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo 'Successfully Connected!<br/>';
     $id = 0;
-    $stmt = $db->prepare('SELECT * FROM "Snowball"."Users" WHERE user_id=:id');
-    $stmt->execute(array(':id' => $id));
-    $_SESSION["user"] = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $user_stmt = $db->prepare('SELECT * FROM "Snowball"."Users" WHERE user_id=:id');
+    $user_stmt->execute(array(':id' => $id));
+    $_SESSION["user"] = $user_stmt->fetchAll(PDO::FETCH_ASSOC);
 
+    $debt_stmt = $db->prepare('SELECT * FROM "Snowball"."Debt" WHERE fk_user_id=:id');
+    $debt_stmt->execute(array(':id' => $id));
+    $_SESSION["debt"] = $debt_stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 catch (PDOException $ex)
 {
@@ -49,14 +51,24 @@ catch (PDOException $ex)
     <div>
 
         <h2><?php echo $_SESSION["user"][0]["first_name"] . ' ' . $_SESSION["user"][0]["last_name"];
-            echo $user[0]["first_name"] . ' ' . $user[0]["last_name"];
         ?></h2>
-        <form>
+        <div>
             <label>Additional Funds</label>
-            <input type="text">
+            <input type="text"><br/>
+            <table>
+                <tr><th>Debt Name</th><th>Minimum Payment</th><th>Remaining Debt</th></tr>
+                <?php
+                foreach ($_SESSION["debt"] AS $debt) {
+                    echo '<tr><td>$debt["debt_name"]</td><td>$debt["minimum_payment"]</td><td>$debt["remaining_amount"]</td></tr>';
+                }
+                ?>
+            </table>
 
-        </form>
-        <input>
+
+
+            <input>
+        </div>
+
 
     </div>
 
