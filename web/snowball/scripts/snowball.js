@@ -16,8 +16,9 @@
 }
 
 function addDebtRow() {
+	var tableIndex = debtTable.rows.length - 2;
 	var debtTable = document.getElementById("debtTable");
-	var row = debtTable.insertRow(debtTable.rows.length - 2);
+	var row = debtTable.insertRow(tableIndex);
 	var debtName = row.insertCell(0);
 	var minPayment = row.insertCell(1);
 	var remAmount = row.insertCell(2);
@@ -26,7 +27,7 @@ function addDebtRow() {
 	debtName.innerHTML = "<input class='debt_name' type='text'>";
 	minPayment.innerHTML = "<input type='text\' class='minimum_payment' value='0.00'>";
 	remAmount.innerHTML = "<input type='text\' class='remaining_amount' value='0.00'>";
-	remove.innerHTML = "<a href=''>Remove</a>";
+	remove.innerHTML = "<button onclick=\"deleteRow(" + tableIndex + ")\">Remove</button>";
 
 }
 
