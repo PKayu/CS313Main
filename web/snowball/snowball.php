@@ -58,8 +58,8 @@ catch (PDOException $ex)
                 $cnt = 1;
                 foreach ($_SESSION["debt"] AS $debt) {
                     echo '<tr id="debtID-'. $cnt . '-' . $debt["debt_id"] .'"><td><input class="debt_name" type="text" value='. $debt["debt_name"] .'>' . '</td>'
-                        .'<td><input type="text" class="minimum_payment" value='. number_format($debt["minimum_payment"], 2, '.', ',') .'>'. '</td>'
-                        .'<td><input type="text" class="remaining_amount" value='. number_format($debt["remaining_amount"], 2, '.', ',') .'>' . '</td>'
+                        .'<td><input type="text" class="minimum_payment" value='. number_format($debt["minimum_payment"], 2, '.', '') .'>'. '</td>'
+                        .'<td><input type="text" class="remaining_amount" value='. number_format($debt["remaining_amount"], 2, '.', '') .'>' . '</td>'
                         .'<td><button onclick="deleteRow(' . $cnt . ')">Remove</button></td></tr>';
                     $cnt++;
                 }
