@@ -47,8 +47,6 @@ catch (PDOException $ex)
             will show you where to ues your money in order to pay of debt as quickly as possible. This will save you from paying interest
             on your loans and will reduce the amount of time you stay in debt.
         </p>
-    </div>
-    <div>
 
         <h2><?php echo $_SESSION["user"][0]["first_name"] . ' ' . $_SESSION["user"][0]["last_name"];
         ?></h2>
@@ -65,12 +63,7 @@ catch (PDOException $ex)
                 }
                 ?>
             </table>
-
-
-
-            <input>
         </div>
-
 
     </div>
 
