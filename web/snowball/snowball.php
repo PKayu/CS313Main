@@ -26,6 +26,7 @@ try
     $stmt = $db->prepare('SELECT * FROM "Snowball"."Users" WHERE user_id=:id');
     $stmt->execute(array(':id' => $id));
     $_SESSION["user"] = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 }
 catch (PDOException $ex)
@@ -48,8 +49,14 @@ catch (PDOException $ex)
     <div>
 
         <h2><?php echo $_SESSION["user"][0]["first_name"] . ' ' . $_SESSION["user"][0]["last_name"];
-            var_dump($_SESSION["user"]);
+            echo $user[0]["first_name"] . ' ' . $user[0]["last_name"];
         ?></h2>
+        <form>
+            <label>Additional Funds</label>
+            <input type="text">
+
+        </form>
+        <input>
 
     </div>
 
