@@ -26,6 +26,14 @@ include "header.php";
 
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             echo 'Successfully Connected!';
+
+            foreach ($db->query('SELECT * FROM users') as $row)
+            {
+                echo 'user ID: ' . $row['user_id'];
+                echo ' <br/> Name: ' . $row['first_name'] . ' ' . $row['last_name'];
+                echo ' <br/> Additional Funds: $' . $row['addit_funds'];
+                echo '<br/>';
+            }
         }
         catch (PDOException $ex)
         {
