@@ -21,7 +21,7 @@ session_start();
 </header>
 <div id="sidemenu">
     <br />
-    <a href="home.html">Home</a>
+    <a href="home.php">Home</a>
     <a href="assignments.html">Assignments</a>
 </div>
 <h2>Your Shopping Cart</h2>
