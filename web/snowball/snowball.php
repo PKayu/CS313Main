@@ -48,8 +48,7 @@ catch (PDOException $ex)
             on your loans and will reduce the amount of time you stay in debt.
         </p>
 
-        <h2><?php echo $_SESSION["user"][0]["first_name"] . ' ' . $_SESSION["user"][0]["last_name"];
-        ?></h2>
+        <h2><?php echo $_SESSION["user"][0]["first_name"] . ' ' . $_SESSION["user"][0]["last_name"]; ?></h2>
         <div>
             <label>Additional Funds</label>
             <input type="text"><br/>
@@ -57,9 +56,9 @@ catch (PDOException $ex)
                 <tr><th>Debt Name</th><th>Minimum Payment</th><th>Remaining Debt</th></tr>
                 <?php
                 foreach ($_SESSION["debt"] AS $debt) {
-                    echo '<tr><td>' . $debt["debt_name"] . '</td><td>'
-                        . $debt["minimum_payment"] . '</td><td>'
-                        . $debt["remaining_amount"] . '</td></tr>';
+                    echo '<tr id=\"debtID-'. $debt["debt_id"] .'\"><td><input type=\"text\" name=\"debt_name\" value=\"'. $debt["debt_name"] .'\">' . '</td>'
+                        .'<td><input type=\"text\" name=\"minimum_payment\" value=\"'. $debt["minimum_payment"] .'\">'. '</td>'
+                        .'<td><input type=\"text\" name=\"remaining_amount\" value=\"'. $debt["remaining_amount"] .'\">' . '</td></tr>';
                 }
                 ?>
             </table>
