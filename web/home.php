@@ -1,24 +1,9 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Introduction page for CS313" />
-    <title>Daniel Worwood</title>
-    <link rel="stylesheet" type="text/css" href="css/home.css">
-    <script src="scripts/home.js"></script>
-</head>
+﻿<?php
+$title = "Home";                   // (1) Set the title
+include "header.php";                 // (2) Include the header
+?>
 
-<body>
-    <header>
-        <img src="images/BYU-Idaho.png" alt="byui logo" id="logo">
-        <h1>Daniel Worwood - CS313</h1>
-        <img src="images/hamMenu.svg" alt="menu" id="menu" onclick="clickMenu()">
-    </header>
-    <div id="sidemenu">
-        <br />
-        <a href="home.html">Home</a>
-        <a href="assignments.html">Assignments</a>
-    </div>
+<!-- Begin Page Content -->
     <h2>BYU CS313</h2>
     <div class="flexer">
         <div>
@@ -41,14 +26,7 @@
         </div>
 
     </div>
-
-    <footer>
-        <?php
-            echo "The server time is " . date("h:i:sa");
-            ?>
-        BYU-Idaho<br />
-        CS313
-    </footer>
-</body>
-
-</html>
+<!-- End Page Content -->
+<?php
+include "footer.php";
+?>
