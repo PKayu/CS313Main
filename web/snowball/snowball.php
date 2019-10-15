@@ -3,6 +3,7 @@ $title = "Snowball Calculator";
 $css = "snowball.css";
 $javascript = "snowball.js";
 include "header.php";
+session_start();
 ?>
 <?php
 try
@@ -24,7 +25,7 @@ try
     $id = 0;
     $stmt = $db->prepare('SELECT * FROM "Snowball"."Users" WHERE user_id=:id');
     $stmt->execute(array(':id' => $id));
-    $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $_SESSION["user"] = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 }
 catch (PDOException $ex)
@@ -46,7 +47,7 @@ catch (PDOException $ex)
     </div>
     <div>
 
-        <h2><?php $user['first_name']. ' ' . $user['last_name']?></h2>
+        <h2><?php $_SESSION["user"]['first_name']. ' ' . $_SESSION["user"]['last_name']?></h2>
     </div>
 
 </div>
