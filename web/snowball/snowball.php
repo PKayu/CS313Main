@@ -47,7 +47,7 @@ catch (PDOException $ex)
     </div>
     <div>
 
-        <h2><?php $_SESSION["user"]['first_name']. ' ' . $_SESSION["user"]['last_name']?></h2>
+        <h2><?php echo $_SESSION["user"]['first_name']. ' ' . $_SESSION["user"]['last_name']?></h2>
     </div>
 
 </div>
