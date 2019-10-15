@@ -17,7 +17,7 @@
 
 function addDebtRow() {
 	var debtTable = document.getElementById("debtTable");
-	var row = debtTable.insertRow(debtTable.rows.length);
+	var row = debtTable.insertRow(debtTable.rows.length - 2);
 	var debtName = row.insertCell(0);
 	var minPayment = row.insertCell(1);
 	var remAmount = row.insertCell(2);
