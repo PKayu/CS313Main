@@ -52,16 +52,22 @@ catch (PDOException $ex)
         <div>
             <label>Additional Funds</label>
             <input type="text"><br/>
-            <table>
-                <tr><th>Debt Name</th><th>Minimum Payment</th><th>Remaining Debt</th></tr>
+            <table id="debtTable">
+                <tr><th>Debt Name</th><th>Minimum Payment</th><th>Remaining Debt</th><th>Remove</th></tr>
                 <?php
+                $cnt = 0;
                 foreach ($_SESSION["debt"] AS $debt) {
-                    echo '<tr id=\"debtID-'. $debt["debt_id"] .'\"><td><input type=\"text\" name=\"debt_name\" value='. $debt["debt_name"] .'>' . '</td>'
+                    echo '<tr id=\"debtID-'. $cnt . '-' . $debt["debt_id"] .'\"><td><input type=\"text\" name=\"debt_name\" value='. $debt["debt_name"] .'>' . '</td>'
                         .'<td><input type="text" name="minimum_payment" value='. $debt["minimum_payment"] .'>'. '</td>'
-                        .'<td><input type="text" name="remaining_amount" value='. $debt["remaining_amount"] .'>' . '</td></tr>';
+                        .'<td><input type="text" name="remaining_amount" value='. $debt["remaining_amount"] .'>' . '</td>'
+                        .'<td><a href="">Remove</a></td></tr>';
+                    $cnt++;
                 }
                 ?>
             </table>
+            <a href="">Add Row</a>
+            <br>
+            <button name="calculate" onclick="calculate()">Snowball!</button>
         </div>
 
     </div>
