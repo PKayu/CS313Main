@@ -5,8 +5,8 @@
     <meta name="description" content="Introduction page for CS313" />
     <title><?php echo $title; ?></title>
     <link rel="stylesheet" type="text/css" href="css/home.css">
-    <link rel="stylesheet" type="text/css" href="css/home.css">
-    <script src="scripts/home.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/<?php echo $css; ?>">
+    <script src="scripts/<?php echo $javascript; ?>"></script>
 </head>
 
 <body>

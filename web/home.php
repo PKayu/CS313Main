@@ -1,6 +1,8 @@
 ﻿<?php
-$title = "Home";                   // (1) Set the title
-include "header.php";                 // (2) Include the header
+$title = "Home";
+$css = "home.css";
+$javascript = "home.js";
+include "header.php";
 ?>
 
 <!-- Begin Page Content -->
