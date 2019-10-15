@@ -27,7 +27,7 @@ function addDebtRow() {
 	debtName.innerHTML = "<input class='debt_name' type='text'>";
 	minPayment.innerHTML = "<input type='text\' class='minimum_payment' value='0.00'>";
 	remAmount.innerHTML = "<input type='text\' class='remaining_amount' value='0.00'>";
-	remove.innerHTML = "<button onclick=\"deleteRow(" + tableIndex + ")\">Remove</button>";
+	remove.innerHTML = "<button onclick='deleteRow(" + tableIndex + ")'>Remove</button>";
 
 }
 
