@@ -22,7 +22,7 @@ try
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo 'Successfully Connected!<br/>';
     $id = 0;
-    $stmt = $db->prepare('SELECT * FROM "Snowball"."Users" WHERE id=:id');
+    $stmt = $db->prepare('SELECT * FROM "Snowball"."Users" WHERE user_id=:id');
     $stmt->execute(array(':id' => $id));
     $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
