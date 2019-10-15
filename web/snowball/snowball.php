@@ -55,12 +55,12 @@ catch (PDOException $ex)
             <table id="debtTable">
                 <tr><th>Debt Name</th><th>Minimum Payment</th><th>Remaining Debt</th><th>Remove</th></tr>
                 <?php
-                $cnt = 0;
+                $cnt = 1;
                 foreach ($_SESSION["debt"] AS $debt) {
                     echo '<tr id="debtID-'. $cnt . '-' . $debt["debt_id"] .'"><td><input class="debt_name" type="text" value='. $debt["debt_name"] .'>' . '</td>'
                         .'<td><input type="text" class="minimum_payment" value='. $debt["minimum_payment"] .'>'. '</td>'
                         .'<td><input type="text" class="remaining_amount" value='. $debt["remaining_amount"] .'>' . '</td>'
-                        .'<td><a href="">Remove</a></td></tr>';
+                        .'<td><button onclick="deleteRow(' . $cnt . ')">Remove</button></td></tr>';
                     $cnt++;
                 }
                 ?>

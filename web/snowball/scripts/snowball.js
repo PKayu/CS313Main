@@ -30,6 +30,10 @@ function addDebtRow() {
 
 }
 
+function deleteRow(index) {
+	document.getElementById("debtTable").deleteRow(index);
+}
+
 function calculate() {
 	// sum remaining amounts
 	var remaining_amounts = document.getElementsByClassName("remaining_amount");
