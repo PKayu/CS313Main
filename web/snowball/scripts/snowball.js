@@ -18,7 +18,7 @@
 function calculate() {
 	var remaining_amounts = document.getElementsByClassName("remaining_amount");
 	var debtRemaining = 0;
-	for (var index = 1; index < remaining_amounts.length; i++) {
+	for (var index = 1; index < remaining_amounts.length; index++) {
 		debtRemaining += remaining_amounts[index].value;
 	}
 	document.getElementById("sumAmount").value = debtRemaining;
