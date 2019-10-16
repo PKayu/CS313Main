@@ -51,7 +51,7 @@ catch (PDOException $ex)
         <h2><?php echo $_SESSION["user"][0]["first_name"] . ' ' . $_SESSION["user"][0]["last_name"]; ?></h2>
         <div>
             <label>Additional Funds</label>
-            <input id="addit_funds" type="text"><br/>
+            <input id="addit_funds" type="text" value=0><br/>
             <table id="debtTable">
                 <tr><th>Debt Name</th><th>Minimum Payment</th><th>Remaining Debt</th><th>Remove</th></tr>
                 <?php
