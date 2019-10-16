@@ -54,8 +54,9 @@ function snowball() {
 	pmtTable += "</tr>";
 
 	// fill table
+	var remainder = 0;
 	while(debtRemaining > 0) {
-		var remainder = 0;
+		var pmtCounter = 1;
 		var additFunds = parseFloat(document.getElementById('addit_funds').value);
 		pmtTable += "<tr>";
 		for(var debtIndex = 0; debtIndex < debtArray.length; debtIndex++) {
@@ -64,7 +65,7 @@ function snowball() {
 			var payment = parseFloat(minPayment);
 			if(debtIndex === 0) {
 				payment = parseFloat(minPayment + additFunds);
-				pmtTable += "<td>" + debtIndex + "</td>";
+				pmtTable += "<td>" + pmtCounter + "</td>";
 			}
 			if(debtArray[debtIndex] > payment) {
 				debtArray[debtIndex] -= payment;
@@ -83,25 +84,7 @@ function snowball() {
 		for(var debtIndex = 0; debtIndex < debtArray.length; debtIndex++) {
 			debtRemaining += debtArray[debtIndex];
 		}
-
-		// for(var debtIndex = 0; debtIndex < remaining_amounts.length; debtIndex++ ) {
-		// 		// 	var principle = parseFloat(remaining_amounts[debtIndex].value);
-		// 		// 	var minPayment = parseFloat(document.getElementsByClassName('minimum_payment')[debtIndex].value);
-		// 		//
-		// 		// 	if(debtIndex === 0) {
-		// 		// 		var payment = minPayment + parseFloat(additFunds.value);
-		// 		// 	}
-		// 		//
-		// 		// 	if(payment < debtArray[debtIndex]) {
-		// 		// 		debtArray[debtIndex] -= payment;
-		// 		// 		debtRemaining -= payment;
-		// 		// 	} else {
-		// 		// 		remainder = payment - principle;
-		// 		// 		principle = 0;
-		// 		// 	}
-		// 		// 	pmtTable += "<td>" + payment + "</td>";
-		// 		//
-		// 		// }
+		pmtCounter++;
 	}
 	pmtTable += "</table>";
 	document.getElementById("results").innerHTML = pmtTable;
