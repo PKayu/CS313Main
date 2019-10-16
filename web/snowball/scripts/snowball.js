@@ -75,7 +75,7 @@ function snowball() {
 				pmtTable += "<td>" + (payment - remainder) + "</td>";
 			}
 		}
-		pmtTable = "</tr>";
+		pmtTable += "</tr>";
 
 
 		debtRemaining = 0;
