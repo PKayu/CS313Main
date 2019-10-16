@@ -55,8 +55,8 @@ function snowball() {
 
 	// fill table
 	var remainder = 0;
+	var pmtCounter = 1;
 	while(debtRemaining > 0) {
-		var pmtCounter = 1;
 		var additFunds = parseFloat(document.getElementById('addit_funds').value);
 		pmtTable += "<tr>";
 		for(var debtIndex = 0; debtIndex < debtArray.length; debtIndex++) {
@@ -70,11 +70,11 @@ function snowball() {
 			if(debtArray[debtIndex] > payment) {
 				debtArray[debtIndex] -= payment;
 				remainder = 0;
-				pmtTable += "<td>" + payment + "</td>";
+				pmtTable += "<td>" + payment.toFixed(2) + "</td>";
 			} else {
 				remainder = payment - debtArray[debtIndex];
 				debtArray[debtIndex] = 0;
-				pmtTable += "<td>" + (payment - remainder) + "</td>";
+				pmtTable += "<td>" + (payment - remainder).toFixed(2) + "</td>";
 			}
 		}
 		pmtTable += "</tr>";
