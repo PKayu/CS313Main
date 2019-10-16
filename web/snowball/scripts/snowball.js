@@ -61,9 +61,10 @@ function snowball() {
 		for(var debtIndex = 0; debtIndex < debtArray.length; debtIndex++) {
 			var minPayment = parseFloat(document.getElementsByClassName('minimum_payment')[debtIndex].value);
 			minPayment += remainder;
+			var payment = parseFloat(minPayment);
 			if(debtIndex === 0) {
-				var payment = parseFloat(minPayment + additFunds);
-				pmtTable += "<td>&nbsp;</td>";
+				payment = parseFloat(minPayment + additFunds);
+				pmtTable += "<td>debtIndex</td>";
 			}
 			if(debtArray[debtIndex] > payment) {
 				debtArray[debtIndex] -= payment;
