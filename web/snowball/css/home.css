@@ -132,7 +132,6 @@ footer {
 		max-width: 40em;
 	}
     .flexer div {
-        width: 100%;
         padding: 1em;
         margin:1em;
         border: solid #0076B6 2px;
@@ -145,7 +144,6 @@ footer {
 	}
     .flexer div {
         min-height: 35em;
-        width: 100%;
         padding: 1em;
         margin: 1em;
         border: solid #0076B6 2px;
@@ -170,7 +168,6 @@ footer {
 
     .flexer div {
         min-height: 40em;
-        width: 100%;
         padding: 1em;
         margin: 1em;
         border: solid #0076B6 2px;
