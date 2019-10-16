@@ -12,9 +12,13 @@
     margin-right: auto;
 }
 
+.debtTable table td {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
 @media only screen and (max-width: 600px) {
     .flexer div {
-        width: 100%;
     }
 }
 @media only screen and (min-width: 601px) and (max-width: 1180px) {
@@ -23,13 +27,11 @@
     }
     .flexer div {
         min-height: auto;
-        width: 100%;
     }
 }
 @media only screen and (min-width: 1181px) {
 
     .flexer div {
         min-height: auto;
-        width: 100%;
     }
 }
