@@ -35,6 +35,76 @@ function deleteRow(index) {
 	document.getElementById("debtTable").deleteRow(index);
 }
 
+function snowball() {
+	var debtNames = document.getElementsByClassName('debt_name');
+	var remaining_amounts = document.getElementsByClassName('remaining_amount');
+	var debtRemaining = 0;
+	var debtArray = [];
+	for (var index = 0; index < remaining_amounts.length; index++) {
+		debtArray[index] = parseFloat(remaining_amounts[index].value);
+		debtRemaining += parseFloat(remaining_amounts[index].value);
+	}
+
+	//build header
+	var pmtTable = "<table>";
+	pmtTable += "<tr><th>Pmt#</th>";
+	for(var i = 0; i < debtNames.length; i++) {
+		pmtTable += "<th>" + debtNames[i].value + "</th>";
+	}
+	pmtTable += "</tr>";
+
+	// fill table
+	while(debtRemaining > 0) {
+		var remainder = 0;
+		var additFunds = document.getElementById('addit_funds').value;
+		pmtTable = "<tr>";
+		for(var debtIndex = 0; debtIndex < debtArray.length; debtIndex++) {
+			var minPayment = parseFloat(document.getElementsByClassName('minimum_payment')[debtIndex].value);
+			minPayment += remainder;
+			if(debtIndex === 0) {
+				var payment = parseFloat(minPayment + additFunds);
+			}
+			if(debtArray[debtIndex] > payment) {
+				debtArray[debtIndex] -= payment;
+				remainder = 0;
+				pmtTable += "<td>" + payment + "</td>";
+			} else {
+				remainder = payment - debtArray[debtIndex];
+				debtArray[debtIndex] = 0;
+				pmtTable += "<td>" + (payment - remainder) + "</td>";
+			}
+		}
+		pmtTable = "</tr>";
+
+
+		debtRemaining = 0;
+		for(var debtIndex = 0; debtIndex < debtArray.length; debtIndex++) {
+			debtRemaining += debtArray[debtIndex];
+		}
+
+		// for(var debtIndex = 0; debtIndex < remaining_amounts.length; debtIndex++ ) {
+		// 		// 	var principle = parseFloat(remaining_amounts[debtIndex].value);
+		// 		// 	var minPayment = parseFloat(document.getElementsByClassName('minimum_payment')[debtIndex].value);
+		// 		//
+		// 		// 	if(debtIndex === 0) {
+		// 		// 		var payment = minPayment + parseFloat(additFunds.value);
+		// 		// 	}
+		// 		//
+		// 		// 	if(payment < debtArray[debtIndex]) {
+		// 		// 		debtArray[debtIndex] -= payment;
+		// 		// 		debtRemaining -= payment;
+		// 		// 	} else {
+		// 		// 		remainder = payment - principle;
+		// 		// 		principle = 0;
+		// 		// 	}
+		// 		// 	pmtTable += "<td>" + payment + "</td>";
+		// 		//
+		// 		// }
+	}
+	pmtTable += "</table>";
+	document.getElementById("results").innerHTML = pmtTable;
+}
+
 function calculate() {
 	// sum remaining amounts
 	var remaining_amounts = document.getElementsByClassName("remaining_amount");
