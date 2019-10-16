@@ -71,6 +71,7 @@ catch (PDOException $ex)
             <br>
             <br>
             <button name="calculate" onclick="calculate()">Snowball!</button>
+            <button name="calculate" onclick="snowball()">Generate!</button>
         </div>
         <div id="results"></div>
 
