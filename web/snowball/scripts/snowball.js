@@ -56,13 +56,14 @@ function snowball() {
 	// fill table
 	while(debtRemaining > 0) {
 		var remainder = 0;
-		var additFunds = document.getElementById('addit_funds').value;
+		var additFunds = parseFloat(document.getElementById('addit_funds').value);
 		pmtTable = "<tr>";
 		for(var debtIndex = 0; debtIndex < debtArray.length; debtIndex++) {
 			var minPayment = parseFloat(document.getElementsByClassName('minimum_payment')[debtIndex].value);
 			minPayment += remainder;
 			if(debtIndex === 0) {
 				var payment = parseFloat(minPayment + additFunds);
+				pmtTable += "<td>&nbsp;</td>";
 			}
 			if(debtArray[debtIndex] > payment) {
 				debtArray[debtIndex] -= payment;
