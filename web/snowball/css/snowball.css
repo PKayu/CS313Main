@@ -12,7 +12,7 @@
     margin-right: auto;
 }
 
-.debtTable table td {
+#results > table > tbody > tr > td {
     padding-left: 1em;
     padding-right: 1em;
 }
