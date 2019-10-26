@@ -11,7 +11,7 @@ function getGUID(){
             .substr($charid, 8, 4)
             .substr($charid,12, 4)
             .substr($charid,16, 4)
-            .substr($charid,20,12);            
+            .substr($charid,20,12);
         return $uuid;
     }
 }
@@ -32,7 +32,7 @@ try
 
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo 'connected to db <br>';
-    $query = 'INSERT INTO "Snowball"."Users" VALUES (:id, :firstName, :lastName, :password)';
+    $query = 'INSERT INTO "Snowball"."Users" VALUES (:id, :firstName, :lastName, 0, :password)';
     $statement = $db->prepare($query);
 
     $userGuid = getGUID();
