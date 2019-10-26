@@ -87,7 +87,10 @@ function snowball() {
 		pmtCounter++;
 	}
 	pmtTable += "</table>";
+	var desc = "<p>The table below shows how much quicker if you start putting the left over funds from a paid-off debt " +
+		"towards your other debt.</p>"
 	document.getElementById("results").innerHTML = pmtTable;
+	calculate();
 }
 
 function calculate() {

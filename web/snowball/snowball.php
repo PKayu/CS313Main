@@ -70,8 +70,7 @@ catch (PDOException $ex)
             <p onclick="addDebtRow()">Add Row</p>
             <br>
             <br>
-            <button name="calculate" onclick="calculate()">Snowball!</button>
-            <button name="calculate" onclick="snowball()">Generate!</button>
+            <button name="calculate" onclick="snowball()">Snowball!</button>
         </div>
         <div id="results"></div>
 
