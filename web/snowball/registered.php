@@ -1,4 +1,5 @@
 <?php
+echo 'load page<br>';
 try
 {
     $dbUrl = getenv('DATABASE_URL');
@@ -14,7 +15,7 @@ try
     $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
 
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+    echo 'connect to db <br>';
     $query = 'INSERT INTO "Snowball"."Users" VALUES (:id, :firstName, :lastName, :password)';
     $statement = $db->prepare($query);
 
@@ -22,6 +23,8 @@ try
     $firstName = $_POST["f_name"];
     $lastName = $_POST["l_name"];
     $password = $_POST["password"];
+
+    echo 'load variables'. $userGuid.', '.$firstName.', '.$lastName.', '.$password.' <br>';
 
     $statement->bindValue(':id', $userGuid);
     $statement->bindValue(':firstName', $firstName);

@@ -1,6 +1,6 @@
 <?php
 $title = "Snowball Calculator";
-$css = "snowball.css";
+$css = "register.css";
 $javascript = "register.js";
 include "header.php";
 session_start();
