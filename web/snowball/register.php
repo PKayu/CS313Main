@@ -10,7 +10,7 @@ session_start();
 <div class="flexer">
     <div>
         <h1>Snowball Calculator</h1>
-       <form method="post" action="registered.php">
+       <form method="post" action="registered.php" onsubmit="return validateRegister()">
            <label>First Name</label>
            <input type="text" name="f_name"><br>
            <label>Last Name</label>
@@ -19,7 +19,7 @@ session_start();
            <input type="password" name="password"><br>
            <label>Confirm Password</label>
            <input type="password" name="confirm"><br>
-           <button type="submit" onclick="validateRegister()">Register</button>
+           <button type="submit">Register</button>
        </form>
         <p id="message"></p>
     </div>
