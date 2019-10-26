@@ -34,20 +34,24 @@ try
     echo 'connected to db <br>';
 
     $username = $_POST["username"];
-    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+    $password = $_POST["password"];
 
     echo 'password: '.password_hash($_POST["password"], PASSWORD_DEFAULT).'<br>';
 
     $query = 'SELECT * FROM "Snowball"."Users" WHERE username = :username';
     $statement = $db->prepare($query);
-
-
     $statement->bindValue(':username', $username);
-    if($statement->execute() == null) {
-        echo 'No Results<br>';
-    } else { echo 'results<br>';}
+    $statement->execute();
+    $_SESSION["user"] = $user_stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    echo 'Registered completed';
+    $hash = $_SESSION["user"][0]["password"];
+    if (password_verify($password, $hash)) {
+        echo 'Password is valid!';
+    } else {
+        echo 'Invalid password.';
+    }
+
+    echo 'Login Complete';
 }
 catch (PDOException $ex)
 {

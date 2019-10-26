@@ -15,7 +15,7 @@ session_start();
             <input type="text" name="username" id="username"><br>
             <label>Password</label>
             <input type="password" name="password" id="password"><br>
-            <button type="submit">Register</button>
+            <button type="submit">Login</button>
         </form>
         <p id="message"></p>
     </div>

@@ -52,6 +52,13 @@ try
     $statement->execute();
 
     echo 'Registered completed';
+    $query = 'SELECT * FROM "Snowball"."Users" WHERE username = :username';
+    $statement = $db->prepare($query);
+
+
+    $statement->bindValue(':username', $username);
+    $statement->execute();
+    $_SESSION["user"] = $user_stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 catch (PDOException $ex)
 {
