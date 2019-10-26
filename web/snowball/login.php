@@ -20,46 +20,45 @@ session_start();
         </form>
         <p id="message">
             <?php
-            if(empty($_POST["password"])) {
-                return;
-            }
-            if (empty($_SESSION["user"])) {
-                try
-                {
-                    $dbUrl = getenv('DATABASE_URL');
+            if(!empty($_POST["password"])) {
+                if (empty($_SESSION["user"])) {
+                    try
+                    {
+                        $dbUrl = getenv('DATABASE_URL');
 
-                    $dbOpts = parse_url($dbUrl);
+                        $dbOpts = parse_url($dbUrl);
+    
+                        $dbHost = $dbOpts["host"];
+                        $dbPort = $dbOpts["port"];
+                        $dbUser = $dbOpts["user"];
+                        $dbPassword = $dbOpts["pass"];
+                        $dbName = ltrim($dbOpts["path"],'/');
 
-                    $dbHost = $dbOpts["host"];
-                    $dbPort = $dbOpts["port"];
-                    $dbUser = $dbOpts["user"];
-                    $dbPassword = $dbOpts["pass"];
-                    $dbName = ltrim($dbOpts["path"],'/');
+                        $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
 
-                    $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+                        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                        $username = $_POST["username"];
+                        $password = $_POST["password"];
 
-                    $username = $_POST["username"];
-                    $password = $_POST["password"];
+                        $userQuery = 'SELECT * FROM "Snowball"."Users" WHERE username = :username';
+                        $statement = $db->prepare($userQuery);
+                        $statement->bindValue(':username', $username);
+                        $statement->execute();
+                        $_SESSION["user"] = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-                    $userQuery = 'SELECT * FROM "Snowball"."Users" WHERE username = :username';
-                    $statement = $db->prepare($userQuery);
-                    $statement->bindValue(':username', $username);
-                    $statement->execute();
-                    $_SESSION["user"] = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-                    $hash = $_SESSION["user"][0]["password"];
-                    if (password_verify($password, $hash)) {
-                        header("Location: snowball.php");
-                    } else {
-                        echo 'Invalid password.';
+                        $hash = $_SESSION["user"][0]["password"];
+                        if (password_verify($password, $hash)) {
+                            header("Location: snowball.php");
+                        } else {
+                            echo 'Invalid password.';
+                        }
                     }
-                }
-                catch (PDOException $ex)
-                {
-                    echo 'Error!: ' . $ex->getMessage();
-                    die();
+                    catch (PDOException $ex)
+                    {
+                        echo 'Error!: ' . $ex->getMessage();
+                        die();
+                    }
                 }
             }
             ?>
