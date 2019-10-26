@@ -16,10 +16,10 @@ function clickMenu() {
 }
 
 function validateRegister() {
-    var firstName = document.getElementsByName("f_name");
-    var lastName = document.getElementsByName("l_name");
-    var password = document.getElementsByName("password");
-    var confirm = document.getElementsByName("confirm");
+    var firstName = document.getElementById("f_name");
+    var lastName = document.getElementById("l_name");
+    var password = document.getElementById("password");
+    var confirm = document.getElementById("confirm");
 
     if(firstName.length < 1) {
         document.getElementById("message").innerText = "Please enter a first name";

@@ -12,13 +12,13 @@ session_start();
         <h1>Snowball Calculator</h1>
        <form method="post" action="registered.php" onsubmit="return validateRegister()">
            <label>First Name</label>
-           <input type="text" name="f_name"><br>
+           <input type="text" name="f_name" id="f_name"><br>
            <label>Last Name</label>
-           <input type="text" name="l_name"><br>
+           <input type="text" name="l_name" id="l_name"><br>
            <label>Password</label>
-           <input type="password" name="password"><br>
+           <input type="password" name="password" id="password"><br>
            <label>Confirm Password</label>
-           <input type="password" name="confirm"><br>
+           <input type="password" name="confirm" id="confirm"><br>
            <button type="submit">Register</button>
        </form>
         <p id="message"></p>
