@@ -23,21 +23,21 @@ function validateRegister() {
 
     if(firstName.length < 1) {
         document.getElementById("message").innerText = "Please enter a first name";
-        return 0;
+        return false;
     }
 
     if(lastName.length < 1) {
         document.getElementById("message").innerText = "Please enter a last name";
-        return 0;
+        return false;
     }
 
     if(password.length < 8) {
         document.getElementById("message").innerText = "Please enter a password of more than 8 characters";
-        return 0;
+        return false;
     }
 
     if(password !== confirm) {
         document.getElementById("message").innerText = "Password needs to match!";
-        return 0;
+        return false;
     }
 }
