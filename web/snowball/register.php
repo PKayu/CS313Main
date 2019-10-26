@@ -11,6 +11,8 @@ session_start();
     <div>
         <h1>Snowball Calculator</h1>
        <form method="post" action="registered.php" onsubmit="return validateRegister()">
+           <label>Username</label>
+           <input type="text" name="username" id="username"><br>
            <label>First Name</label>
            <input type="text" name="f_name" id="f_name"><br>
            <label>Last Name</label>

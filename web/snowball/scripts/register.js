@@ -20,6 +20,12 @@ function validateRegister() {
     var lastName = document.getElementById("l_name").value;
     var password = document.getElementById("password").value;
     var confirm = document.getElementById("confirm").value;
+    var username = document.getElementById("username").value
+
+    if(username.length < 6) {
+        document.getElementById("message").innerText = "Please enter a valid username at least 6 characters long";
+        return false;
+    }
 
     if(firstName.length < 1) {
         document.getElementById("message").innerText = "Please enter a first name";

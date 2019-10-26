@@ -32,14 +32,15 @@ try
 
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo 'connected to db <br>';
-    $query = 'INSERT INTO "Snowball"."Users" VALUES (:id, :firstName, :lastName, 0, :password)';
+    $query = 'INSERT INTO "Snowball"."Users" VALUES (:id, :firstName, :lastName, 0, :password, :username)';
     $statement = $db->prepare($query);
 
     $userGuid = getGUID();
     echo 'created GUID: '. $userGuid.'<br>';
+    $username = $_POST["username"];
     $firstName = $_POST["f_name"];
     $lastName = $_POST["l_name"];
-    $password = $_POST["password"];
+    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
     echo 'load variables, '.$firstName.', '.$lastName.', '.$password.' <br>';
 
@@ -47,6 +48,7 @@ try
     $statement->bindValue(':firstName', $firstName);
     $statement->bindValue(':lastName', $lastName);
     $statement->bindValue(':password', $password);
+    $statement->bindValue(':username', $username);
     $statement->execute();
 
     echo 'Registered completed';
