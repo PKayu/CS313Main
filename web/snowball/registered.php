@@ -1,5 +1,15 @@
 <?php
-echo 'load page<br>';
+$title = "Snowball Calculator";
+$css = "register.css";
+$javascript = "register.js";
+include "header.php";
+session_start();
+?>
+<h2>BYU CS313</h2>
+<div class="flexer">
+    <div>
+        <h1>Snowball Calculator</h1>
+<?php
 function getGUID(){
     if (function_exists('com_create_guid')){
         return com_create_guid();
@@ -31,18 +41,14 @@ try
     $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
 
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo 'connected to db <br>';
     $query = 'INSERT INTO "Snowball"."Users" VALUES (:id, :firstName, :lastName, 0, :password, :username)';
     $statement = $db->prepare($query);
 
     $userGuid = getGUID();
-    echo 'created GUID: '. $userGuid.'<br>';
     $username = $_POST["username"];
     $firstName = $_POST["f_name"];
     $lastName = $_POST["l_name"];
     $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-
-    echo 'load variables, '.$firstName.', '.$lastName.', '.$password.' <br>';
 
     $statement->bindValue(':id', $userGuid);
     $statement->bindValue(':firstName', $firstName);
@@ -51,18 +57,20 @@ try
     $statement->bindValue(':username', $username);
     $statement->execute();
 
-    echo 'Registered completed';
-    $query = 'SELECT * FROM "Snowball"."Users" WHERE username = :username';
-    $statement = $db->prepare($query);
-
-
-    $statement->bindValue(':username', $username);
-    $statement->execute();
-    $_SESSION["user"] = $user_stmt->fetchAll(PDO::FETCH_ASSOC);
+    echo '<p>Registration is complete. Please login <a href="login.php">here</a> </p>';
 }
 catch (PDOException $ex)
 {
 echo 'Error!: ' . $ex->getMessage();
 die();
 }
+?>
+    </div>
+
+</div>
+<!-- End Page Content -->
+
+<?php
+include "footer.php";
+?>
 
