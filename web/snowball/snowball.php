@@ -3,6 +3,7 @@ $title = "Snowball Calculator";
 $css = "snowball.css";
 $javascript = "snowball.js";
 include "header.php";
+session_start();
 ?>
 <?php
 try
