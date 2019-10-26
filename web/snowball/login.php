@@ -18,6 +18,7 @@ session_start();
             <input type="password" name="password" id="password"><br>
             <button type="submit">Login</button>
         </form>
+        <a href="register.php">Click here to register</a>
         <p id="message">
             <?php
             if(!empty($_POST["password"])) {
@@ -27,7 +28,7 @@ session_start();
                         $dbUrl = getenv('DATABASE_URL');
 
                         $dbOpts = parse_url($dbUrl);
-    
+
                         $dbHost = $dbOpts["host"];
                         $dbPort = $dbOpts["port"];
                         $dbUser = $dbOpts["user"];
