@@ -20,6 +20,9 @@ session_start();
         </form>
         <p id="message">
             <?php
+            if(empty(["password"])) {
+                return;
+            }
             if (empty($_SESSION["user"])) {
                 try
                 {
