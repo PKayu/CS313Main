@@ -4,6 +4,10 @@ $css = "snowball.css";
 $javascript = "snowball.js";
 include "header.php";
 session_start();
+if (empty($_SESSION["user"])) {
+    header("Location: login.php");
+}
+
 ?>
 <?php
 try
@@ -22,7 +26,7 @@ try
 
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo 'Successfully Connected!<br/>';
-    $id = 0;
+    $id =  $_SESSION["user"][0]["user_id"];
     $user_stmt = $db->prepare('SELECT * FROM "Snowball"."Users" WHERE user_id=:id');
     $user_stmt->execute(array(':id' => $id));
     $_SESSION["user"] = $user_stmt->fetchAll(PDO::FETCH_ASSOC);
