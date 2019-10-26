@@ -38,11 +38,11 @@ try
 
     echo 'password: '.password_hash($_POST["password"], PASSWORD_DEFAULT).'<br>';
 
-    $query = 'SELECT * FROM "Snowball"."Users" WHERE username = :username';
-    $statement = $db->prepare($query);
+    $userQuery = 'SELECT * FROM "Snowball"."Users" WHERE username = :username';
+    $statement = $db->prepare($userQuery);
     $statement->bindValue(':username', $username);
     $statement->execute();
-    $_SESSION["user"] = $user_stmt->fetchAll(PDO::FETCH_ASSOC);
+    $_SESSION["user"] = $statement->fetchAll(PDO::FETCH_ASSOC);
 
     $hash = $_SESSION["user"][0]["password"];
     if (password_verify($password, $hash)) {
