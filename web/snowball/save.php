@@ -17,11 +17,6 @@ try
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo 'connected to db <br>';
 
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-
-    echo 'password: '.password_hash($_POST["password"], PASSWORD_DEFAULT).'<br>';
-
     $userQuery = 'SELECT * FROM "Snowball"."Users" WHERE username = :username';
     $statement = $db->prepare($userQuery);
     $statement->bindValue(':username', $username);

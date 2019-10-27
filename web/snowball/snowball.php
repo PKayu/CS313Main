@@ -56,25 +56,28 @@ catch (PDOException $ex)
         <div>
             <label>Additional Funds</label>
             <input id="addit_funds" type="text" value=0><br/>
-            <table id="debtTable">
-                <tr><th>Debt Name</th><th>Minimum Payment</th><th>Remaining Debt</th><th>Remove</th></tr>
-                <?php
-                $cnt = 1;
-                foreach ($_SESSION["debt"] AS $debt) {
-                    echo '<tr id="debtID-'. $cnt . '-' . $debt["debt_id"] .'"><td><input class="debt_name" type="text" value='. $debt["debt_name"] .'>' . '</td>'
-                        .'<td><input type="text" class="minimum_payment" value='. number_format($debt["minimum_payment"], 2, '.', '') .'>'. '</td>'
-                        .'<td><input type="text" class="remaining_amount" value='. number_format($debt["remaining_amount"], 2, '.', '') .'>' . '</td>'
-                        .'<td><button onclick="deleteRow(' . $cnt . ')">Remove</button></td></tr>';
-                    $cnt++;
-                }
-                ?>
-                <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-                <tr><td>Total:</td><td><input id="sumPayment" readonly="true"></td><td><input id="sumAmount" readonly="true"></td><td></td></tr>
-            </table>
-            <p onclick="addDebtRow()">Add Row</p>
-            <br>
-            <br>
-            <button name="calculate" onclick="snowball()">Snowball!</button>
+            <form action="save.php" method="post">
+                <table id="debtTable">
+                    <tr><th>Debt Name</th><th>Minimum Payment</th><th>Remaining Debt</th><th>Remove</th></tr>
+                    <?php
+                    $cnt = 1;
+                    foreach ($_SESSION["debt"] AS $debt) {
+                        echo '<tr id="debtID-'. $cnt . '-' . $debt["debt_id"] .'"><td><input class="debt_name" type="text" value='. $debt["debt_name"] .'>' . '</td>'
+                            .'<td><input type="text" class="minimum_payment" value='. number_format($debt["minimum_payment"], 2, '.', '') .'>'. '</td>'
+                            .'<td><input type="text" class="remaining_amount" value='. number_format($debt["remaining_amount"], 2, '.', '') .'>' . '</td>'
+                            .'<td><button onclick="deleteRow(' . $cnt . ')">Remove</button></td></tr>';
+                        $cnt++;
+                    }
+                    ?>
+                    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                    <tr><td>Total:</td><td><input id="sumPayment" readonly="true"></td><td><input id="sumAmount" readonly="true"></td><td></td></tr>
+                </table>
+                <button onclick="addDebtRow()">Add Debt Row</button>
+                <br>
+                <br>
+                <button name="calculate" onclick="snowball()">Snowball!</button>
+                <button type="submit" name="save">Save</button>
+            </form>
         </div>
         <div id="results"></div>
 
