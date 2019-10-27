@@ -24,7 +24,7 @@ function addDebtRow() {
 	var remAmount = row.insertCell(2);
 	var remove = row.insertCell(3);
 
-	row.outerHTML = "name='test'";
+	row.id = "test";
 	debtName.innerHTML = "<input class='debt_name' type='text'>";
 	minPayment.innerHTML = "<input type='text\' class='minimum_payment' value='0.00'>";
 	remAmount.innerHTML = "<input type='text\' class='remaining_amount' value='0.00'>";
