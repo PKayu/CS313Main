@@ -72,10 +72,10 @@ catch (PDOException $ex)
                     <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
                     <tr><td>Total:</td><td><input id="sumPayment" readonly="true"></td><td><input id="sumAmount" readonly="true"></td><td></td></tr>
                 </table>
-                <button onclick="addDebtRow()">Add Debt Row</button>
+                <button onclick="addDebtRow()" type="button">Add Debt Row</button>
                 <br>
                 <br>
-                <button name="calculate" onclick="snowball()">Snowball!</button>
+                <button name="calculate" onclick="snowball()" type="button">Snowball!</button>
                 <button type="submit" name="save">Save</button>
             </form>
         </div>
