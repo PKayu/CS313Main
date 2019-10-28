@@ -92,12 +92,13 @@ function saveRows() {
         aDebt.push(debt);
     }
 
+    var debtRows = JSON.stringify(aDebt);
     $.ajax(
         {
             url: 'save.php',
             type: "post",
             async:true,
-            data: JSON.stringify(aDebt),
+            data: {arrayDebt: debtRows},
             success: function(data) {
                 alert('AJAX call was successful!');
                 alert('Data from the server' + data);
