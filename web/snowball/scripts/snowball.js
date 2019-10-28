@@ -35,14 +35,14 @@ function addDebtRow() {
     var formData = new FormData();
     formData.append("id", id);
 
-    $.ajax({
-        url: 'save.php',
-        type: "post",
-        async:true,
-        data: formData,
-        dataType: 'html',
-
-    });
+    // $.ajax({
+    //     url: 'save.php',
+    //     type: "post",
+    //     async:true,
+    //     data: formData,
+    //     dataType: 'html',
+    //
+    // });
 
 	row.id = id;
 	debtName.innerHTML = "<input class='debt_name' type='text'>";
