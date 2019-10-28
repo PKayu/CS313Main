@@ -36,11 +36,7 @@ function addDebtRow() {
     formData.append("id", id);
 
 
-	row.id = id;
-	debtName.innerHTML = "<input class='debt_name' type='text'>";
-	minPayment.innerHTML = "<input type='text\' class='minimum_payment' value='0.00'>";
-	remAmount.innerHTML = "<input type='text\' class='remaining_amount' value='0.00'>";
-	remove.innerHTML = "<button onclick='deleteRow(" + tableIndex + ")'>Remove</button>";
+
 
      $.ajax(
          {
@@ -52,6 +48,11 @@ function addDebtRow() {
              success: function(data) {
                  alert('AJAX call was successful!');
                  alert('Data from the server' + data);
+                 row.id = id;
+                 debtName.innerHTML = "<input class='debt_name' type='text'>";
+                 minPayment.innerHTML = "<input type='text\' class='minimum_payment' value='0.00'>";
+                 remAmount.innerHTML = "<input type='text\' class='remaining_amount' value='0.00'>";
+                 remove.innerHTML = "<button onclick='deleteRow(" + tableIndex + ")'>Remove</button>";
              },
              error: function() {
                  alert('There was some error performing the AJAX call!');
