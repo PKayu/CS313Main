@@ -15,6 +15,13 @@
     sidemenu.style.minWidth = "10em";
 }
 
+function getGUID() {
+    return 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
+}
+
 function addDebtRow() {
 	var debtTable = document.getElementById("debtTable");
 	var tableIndex = debtTable.rows.length - 2;
@@ -24,7 +31,20 @@ function addDebtRow() {
 	var remAmount = row.insertCell(2);
 	var remove = row.insertCell(3);
 
-	row.id = "test";
+	var id = getGUID();
+    var formData = new FormData();
+    formData.append("id", id);
+
+    $.ajax({
+        url: 'save.php',
+        type: "post",
+        async:true,
+        data: formData,
+        dataType: 'html',
+
+    });
+
+	row.id = id;
 	debtName.innerHTML = "<input class='debt_name' type='text'>";
 	minPayment.innerHTML = "<input type='text\' class='minimum_payment' value='0.00'>";
 	remAmount.innerHTML = "<input type='text\' class='remaining_amount' value='0.00'>";
