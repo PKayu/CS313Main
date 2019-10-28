@@ -4,6 +4,7 @@ $css = "register.css";
 $javascript = "register.js";
 include "header.php";
 include 'connection.php';
+session_destroy();
 session_start();
 
 ?>
@@ -39,7 +40,7 @@ session_start();
                         $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
 
                         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                        
+
                         $username = $_POST["username"];
                         $password = $_POST["password"];
 
