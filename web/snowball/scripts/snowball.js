@@ -42,29 +42,23 @@ function addDebtRow() {
 	remAmount.innerHTML = "<input type='text\' class='remaining_amount' value='0.00'>";
 	remove.innerHTML = "<button onclick='deleteRow(" + tableIndex + ")'>Remove</button>";
 
-    // $.ajax(
-    //     'test.php',
-    //     {
-    //         success: function(data) {
-    //             alert('AJAX call was successful!');
-    //             alert('Data from the server' + data);
-    //         },
-    //         error: function() {
-    //             alert('There was some error performing the AJAX call!');
-    //         }
-    //     }
-    // );
-
-     $.ajax({
-         url: 'save.php',
-         type: "post",
-         async:true,
-         data: formData,
-         dataType: 'html',
-         success: function (result) {
-             $("#results").html(result);
+     $.ajax(
+         'test.php',
+         {
+             url: 'save.php',
+             type: "post",
+             async:true,
+             data: formData,
+             dataType: 'html',
+             success: function(data) {
+                 alert('AJAX call was successful!');
+                 alert('Data from the server' + data);
+             },
+             error: function() {
+                 alert('There was some error performing the AJAX call!');
+             }
          }
-     });
+     );
 }
 
 function deleteRow(index) {
