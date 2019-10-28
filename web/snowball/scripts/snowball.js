@@ -84,7 +84,7 @@ function saveRows() {
     var aDebt = [];
     var debtRow = document.getElementsByClassName("debtRow");
     for(var debtIndex = 0; debtIndex < debtRow.length; debtIndex++) {
-        var rowId = debtRow.id;
+        var rowId = debtRow[0].id;
         var description = debtRow[debtIndex].cells[iDescription].children[0].value;
         var minPayment = debtRow[debtIndex].cells[iMinPayment].children[0].value;
         var remAmount = debtRow[debtIndex].cells[iRemAmount].children[0].value;
