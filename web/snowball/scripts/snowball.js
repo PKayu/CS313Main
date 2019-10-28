@@ -66,12 +66,7 @@ function deleteRow(index, id) {
                 alert('AJAX call was successful!');
                 alert('Data from the server' + data);
                 var row = document.getElementById(id);
-                var table = row.parentNode;
-                while ( table && table.tagName != 'TABLE' )
-                    table = table.parentNode;
-                if ( !table )
-                    return;
-                table.deleteRow(row.rowIndex);
+                row.parentNode.removeChild(row);
 
             },
             error: function() {
