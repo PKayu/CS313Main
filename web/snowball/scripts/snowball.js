@@ -40,8 +40,6 @@ function addDebtRow() {
              async:true,
              data: {'id' : id},
              success: function(data) {
-                 alert('AJAX call was successful!');
-                 alert('Data from the server' + data);
                  row.className = "debtRow";
                  row.id = id;
                  debtName.innerHTML = "<input class='debt_name' type='text'>";
@@ -64,8 +62,6 @@ function deleteRow(index, id) {
             async:true,
             data: {'id' : id},
             success: function(data) {
-                alert('AJAX call was successful!');
-                alert('Data from the server' + data);
                 var row = document.getElementById(id);
                 row.parentNode.removeChild(row);
 
@@ -100,8 +96,6 @@ function saveRows() {
             async:true,
             data: {arrayDebt: debtRows},
             success: function(data) {
-                alert('AJAX call was successful!');
-                alert('Data from the server' + data);
                 document.getElementById("message").innerHTML = "Saved Successfully";
             },
             error: function() {
