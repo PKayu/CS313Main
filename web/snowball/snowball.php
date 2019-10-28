@@ -25,16 +25,16 @@ try
     $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
 
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo 'Successfully Connected!<br/>';
+
     $id =  $_SESSION["user"][0]["user_id"];
     $user_stmt = $db->prepare('SELECT * FROM "Snowball"."Users" WHERE user_id=:id');
     $user_stmt->execute(array(':id' => $id));
     $_SESSION["user"] = $user_stmt->fetchAll(PDO::FETCH_ASSOC);
-    echo 'Load User<br/>';
+
     $debt_stmt = $db->prepare('SELECT * FROM "Snowball"."Debt" WHERE fk_user_id=:id');
     $debt_stmt->execute(array(':id' => $id));
     $_SESSION["debt"] = $debt_stmt->fetchAll(PDO::FETCH_ASSOC);
-    echo 'Load Debt<br/>';
+
 }
 catch (PDOException $ex)
 {

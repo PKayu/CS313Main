@@ -48,8 +48,8 @@ function addDebtRow() {
         async:true,
         data: formData,
         dataType: 'html',
-        success: function (data) {
-            calculate();
+        success: function (result) {
+            $("#results").html(result);
         }
     });
 }

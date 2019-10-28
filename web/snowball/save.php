@@ -1,20 +1,5 @@
 <?php
 echo 'load page<br>';
-function getGUID(){
-    if (function_exists('com_create_guid')){
-        return com_create_guid();
-    }
-    else {
-        mt_srand((double)microtime()*10000);//optional for php 4.2.0 and up.
-        $charid = strtoupper(md5(uniqid(rand(), true)));
-        $uuid = substr($charid, 0, 8)
-            .substr($charid, 8, 4)
-            .substr($charid,12, 4)
-            .substr($charid,16, 4)
-            .substr($charid,20,12);
-        return $uuid;
-    }
-}
 try
 {
     $dbUrl = getenv('DATABASE_URL');
@@ -34,7 +19,7 @@ try
 
     $debt_id = $_POST['id'];
     echo 'debt id: ' . $debt_id;
-    
+
     $user_id = $_SESSION['user'][0]["user_id"];
     $userQuery = 'INSERT INTO "Snowball"."Users" (debt_id, fk_user_id) VALUES (:id, :userid)';
     $statement = $db->prepare($userQuery);
