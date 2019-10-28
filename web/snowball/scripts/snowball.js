@@ -42,6 +42,7 @@ function addDebtRow() {
              success: function(data) {
                  alert('AJAX call was successful!');
                  alert('Data from the server' + data);
+                 row.className = "debtRow";
                  row.id = id;
                  debtName.innerHTML = "<input class='debt_name' type='text'>";
                  minPayment.innerHTML = "<input type='text\' class='minimum_payment' value='0.00'>";

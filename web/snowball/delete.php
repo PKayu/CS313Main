@@ -1,6 +1,5 @@
 <?php
 include 'connection.php';
-echo 'load page<br>';
 session_start();
 try
 {
@@ -12,9 +11,6 @@ try
     $statement = $db->prepare($userQuery);
     $statement->bindValue(':id', $debt_id);
     $statement->execute();
-
-
-    echo 'DELETE Complete Complete';
 }
 catch (PDOException $ex)
 {
