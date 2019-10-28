@@ -35,14 +35,6 @@ function addDebtRow() {
     var formData = new FormData();
     formData.append("id", id);
 
-    $.ajax({
-        url: 'save.php',
-        type: "post",
-        async:true,
-        data: formData,
-        dataType: 'html',
-
-    });
 
 	row.id = id;
 	debtName.innerHTML = "<input class='debt_name' type='text'>";
@@ -50,6 +42,16 @@ function addDebtRow() {
 	remAmount.innerHTML = "<input type='text\' class='remaining_amount' value='0.00'>";
 	remove.innerHTML = "<button onclick='deleteRow(" + tableIndex + ")'>Remove</button>";
 
+    $.ajax({
+        url: 'save.php',
+        type: "post",
+        async:true,
+        data: formData,
+        dataType: 'html',
+        success: function (data) {
+            calculate();
+        }
+    });
 }
 
 function deleteRow(index) {
