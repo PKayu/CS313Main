@@ -56,8 +56,6 @@ function addDebtRow() {
 }
 
 function deleteRow(index, id) {
-    alert("Button Click!");
-    var test = "test";
     $.ajax(
         {
             url: 'delete.php',
@@ -67,7 +65,8 @@ function deleteRow(index, id) {
             success: function(data) {
                 alert('AJAX call was successful!');
                 alert('Data from the server' + data);
-                document.getElementById("debtTable").deleteRow(index);
+                var row = document.getElementById(id);
+                row.parentNode.removeChild(row);
             },
             error: function() {
                 alert('There was some error performing the AJAX call!');
