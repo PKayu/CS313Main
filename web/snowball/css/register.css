@@ -1,7 +1,9 @@
 #message {
     color: red;
 }
-
+input {
+    width: 100%;
+}
 .item-center {
     text-align: center;
     margin-left: auto;
