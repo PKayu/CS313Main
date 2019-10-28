@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="css/home.css">
     <link rel="stylesheet" type="text/css" href="css/<?php echo $css; ?>">
     <script src="scripts/<?php echo $javascript; ?>"></script>
-    <script src="jquery-3.4.1.min.js"></script>
+    <script src="scripts/jquery-3.4.1.min.js"></script>
 </head>
 
 <body>
