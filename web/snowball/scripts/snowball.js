@@ -43,7 +43,6 @@ function addDebtRow() {
 	remove.innerHTML = "<button onclick='deleteRow(" + tableIndex + ")'>Remove</button>";
 
      $.ajax(
-         'test.php',
          {
              url: 'save.php',
              type: "post",
