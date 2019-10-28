@@ -78,9 +78,12 @@ function deleteRow(index, id) {
 }
 
 function saveRows() {
+    var description = 0;
+    var minPayment = 1;
+    var remAmount = 2;
     var debtRow = document.getElementsByClassName("debtRow");
     for(var debtIndex = 0; debtIndex < debtRow.length; debtIndex++) {
-        debtRow.innerHTML = "";
+        var test = debtRow[debtIndex].cells[description].value;
 
     }
 }
