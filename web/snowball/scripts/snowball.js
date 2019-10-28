@@ -56,6 +56,8 @@ function addDebtRow() {
 }
 
 function deleteRow(index, id) {
+    alert("Button Click!");
+    var test = "test";
     $.ajax(
         {
             url: 'delete.php',
