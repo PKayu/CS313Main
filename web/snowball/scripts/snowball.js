@@ -35,16 +35,12 @@ function addDebtRow() {
     var formData = new FormData();
     formData.append("id", id);
 
-
-
-
      $.ajax(
          {
              url: 'save.php',
              type: "post",
              async:true,
-             data: formData,
-             dataType: 'html',
+             data: {'id' : id},
              success: function(data) {
                  alert('AJAX call was successful!');
                  alert('Data from the server' + data);
