@@ -3,6 +3,7 @@ $title = "Snowball Calculator";
 $css = "snowball.css";
 $javascript = "snowball.js";
 include "header.php";
+include 'connection.php';
 session_start();
 if (empty($_SESSION["user"])) {
     header("Location: login.php");
@@ -12,20 +13,6 @@ if (empty($_SESSION["user"])) {
 <?php
 try
 {
-    $dbUrl = getenv('DATABASE_URL');
-
-    $dbOpts = parse_url($dbUrl);
-
-    $dbHost = $dbOpts["host"];
-    $dbPort = $dbOpts["port"];
-    $dbUser = $dbOpts["user"];
-    $dbPassword = $dbOpts["pass"];
-    $dbName = ltrim($dbOpts["path"],'/');
-
-    $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
-
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
     $id =  $_SESSION["user"][0]["user_id"];
     $user_stmt = $db->prepare('SELECT * FROM "Snowball"."Users" WHERE user_id=:id');
     $user_stmt->execute(array(':id' => $id));
@@ -66,7 +53,7 @@ catch (PDOException $ex)
                         echo "<tr id=' " . $debt["debt_id"] . "'><td><input class='debt_name' type='text' value='" . $debt["debt_name"] ."'></td>"
                             . "<td><input type='text' class='minimum_payment' value=". number_format($debt["minimum_payment"], 2, '.', '') ."></td>"
                             ."<td><input type='text' class='remaining_amount' value=". number_format($debt["remaining_amount"], 2, '.', '') ."></td>"
-                            ."<td><button onclick='deleteRow(" . $cnt . ")'>Remove</button></td></tr>";
+                            ."<td><button onclick='deleteRow(" . $cnt . ", ". $debt['debt_id'] . " )'>Remove</button></td></tr>";
                         $cnt++;
                     }
                     ?>

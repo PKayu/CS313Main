@@ -32,12 +32,10 @@ function addDebtRow() {
 	var remove = row.insertCell(3);
 
 	var id = getGUID();
-    var formData = new FormData();
-    formData.append("id", id);
 
      $.ajax(
          {
-             url: 'save.php',
+             url: 'insert.php',
              type: "post",
              async:true,
              data: {'id' : id},
@@ -48,7 +46,7 @@ function addDebtRow() {
                  debtName.innerHTML = "<input class='debt_name' type='text'>";
                  minPayment.innerHTML = "<input type='text\' class='minimum_payment' value='0.00'>";
                  remAmount.innerHTML = "<input type='text\' class='remaining_amount' value='0.00'>";
-                 remove.innerHTML = "<button onclick='deleteRow(" + tableIndex + ")'>Remove</button>";
+                 remove.innerHTML = "<button onclick='deleteRow(" + tableIndex + ", " + id + ")'>Remove</button>";
              },
              error: function() {
                  alert('There was some error performing the AJAX call!');
@@ -57,8 +55,23 @@ function addDebtRow() {
      );
 }
 
-function deleteRow(index) {
-	document.getElementById("debtTable").deleteRow(index);
+function deleteRow(index, id) {
+    $.ajax(
+        {
+            url: 'delete.php',
+            type: "post",
+            async:true,
+            data: {'id' : id},
+            success: function(data) {
+                alert('AJAX call was successful!');
+                alert('Data from the server' + data);
+                document.getElementById("debtTable").deleteRow(index);
+            },
+            error: function() {
+                alert('There was some error performing the AJAX call!');
+            }
+        }
+    );
 }
 
 function snowball() {

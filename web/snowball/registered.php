@@ -3,6 +3,7 @@ $title = "Snowball Calculator";
 $css = "register.css";
 $javascript = "register.js";
 include "header.php";
+include 'connection.php';
 session_start();
 ?>
 <h2>BYU CS313</h2>
@@ -28,18 +29,6 @@ function getGUID(){
 
 try
 {
-    $dbUrl = getenv('DATABASE_URL');
-
-    $dbOpts = parse_url($dbUrl);
-
-    $dbHost = $dbOpts["host"];
-    $dbPort = $dbOpts["port"];
-    $dbUser = $dbOpts["user"];
-    $dbPassword = $dbOpts["pass"];
-    $dbName = ltrim($dbOpts["path"],'/');
-
-    $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
-
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $query = 'INSERT INTO "Snowball"."Users" VALUES (:id, :firstName, :lastName, 0, :password, :username)';
     $statement = $db->prepare($query);
