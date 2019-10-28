@@ -1,5 +1,4 @@
 <?php
-echo 'load page<br>';
 session_start();
 try
 {

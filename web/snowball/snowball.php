@@ -66,6 +66,7 @@ catch (PDOException $ex)
                 <button name="calculate" onclick="snowball()" type="button">Snowball!</button>
                 <button type="button" onclick="saveRows()">Save</button>
             </form>
+            <p id="message"></p>
         </div>
         <div id="results"></div>
 

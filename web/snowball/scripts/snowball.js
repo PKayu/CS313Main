@@ -91,6 +91,23 @@ function saveRows() {
         var debt = {debt_id: rowId, debt_name: description, minimum_payment: minPayment, remaining_amount: remAmount};
         aDebt.push(debt);
     }
+
+    $.ajax(
+        {
+            url: 'save.php',
+            type: "post",
+            async:true,
+            data: JSON.stringify(aDebt),
+            success: function(data) {
+                alert('AJAX call was successful!');
+                alert('Data from the server' + data);
+                document.getElementById("message").innerHTML = "Saved Successfully";
+            },
+            error: function() {
+                alert('There was some error performing the AJAX call!');
+            }
+        }
+    );
 }
 
 function snowball() {
