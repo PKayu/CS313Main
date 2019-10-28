@@ -46,7 +46,7 @@ function addDebtRow() {
                  debtName.innerHTML = "<input class='debt_name' type='text'>";
                  minPayment.innerHTML = "<input type='text\' class='minimum_payment' value='0.00'>";
                  remAmount.innerHTML = "<input type='text\' class='remaining_amount' value='0.00'>";
-                 remove.innerHTML = "<button onclick='deleteRow(" + tableIndex + ", \'" + id + "\')' type='button'>Remove</button>";
+                 remove.innerHTML = "<button onclick=\"deleteRow(" + tableIndex + ", '" + id + "')\" type='button'>Remove</button>";
              },
              error: function() {
                  alert('There was some error performing the AJAX call!');
@@ -66,7 +66,13 @@ function deleteRow(index, id) {
                 alert('AJAX call was successful!');
                 alert('Data from the server' + data);
                 var row = document.getElementById(id);
-                row.parentNode.removeChild(row);
+                var table = row.parentNode;
+                while ( table && table.tagName != 'TABLE' )
+                    table = table.parentNode;
+                if ( !table )
+                    return;
+                table.deleteRow(row.rowIndex);
+
             },
             error: function() {
                 alert('There was some error performing the AJAX call!');
