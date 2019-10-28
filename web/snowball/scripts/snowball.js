@@ -77,6 +77,14 @@ function deleteRow(index, id) {
     );
 }
 
+function saveRows() {
+    var debtRow = document.getElementsByClassName("debtRow");
+    for(var debtIndex = 0; debtIndex < debtRow.length; debtIndex++) {
+        debtRow.innerHTML = "";
+
+    }
+}
+
 function snowball() {
 	var debtNames = document.getElementsByClassName('debt_name');
 	var remaining_amounts = document.getElementsByClassName('remaining_amount');

@@ -42,15 +42,15 @@ catch (PDOException $ex)
 
         <h2><?php echo $_SESSION["user"][0]["first_name"] . ' ' . $_SESSION["user"][0]["last_name"]; ?></h2>
         <div>
-            <label>Additional Funds</label>
-            <input id="addit_funds" type="text" value=0><br/>
             <form action="save.php" method="post">
+                <label>Additional Funds</label>
+                <input id="addit_funds" type="text" value=0><br/>
                 <table id="debtTable">
                     <tr><th>Debt Name</th><th>Minimum Payment</th><th>Remaining Debt</th><th>Remove</th></tr>
                     <?php
                     $cnt = 1;
                     foreach ($_SESSION["debt"] AS $debt) {
-                        echo "<tr class='debtRow' id='" . $debt["debt_id"] . "'><td><input class='debt_name' type='text' value='" . $debt["debt_name"] ."'></td>"
+                        echo "<tr class='debtRow' id='" . $debt["debt_id"] . "'><td><input name='dn-" . $debt["debt_id"] ."' class='debt_name' type='text' value='" . $debt["debt_name"] ."'></td>"
                             . "<td><input name='mp-" . $debt["debt_id"] ."' type='text' class='minimum_payment' value=". number_format($debt["minimum_payment"], 2, '.', '') ."></td>"
                             ."<td><input name='ra-" . $debt["debt_id"] ."' type='text' class='remaining_amount' value=". number_format($debt["remaining_amount"], 2, '.', '') ."></td>"
                             ."<td><button onclick=\"deleteRow(" . $cnt . ", '". $debt['debt_id'] . "' )\" type='button'>Remove</button></td></tr>";
@@ -64,7 +64,7 @@ catch (PDOException $ex)
                 <br>
                 <br>
                 <button name="calculate" onclick="snowball()" type="button">Snowball!</button>
-                <button type="submit" name="save">Save</button>
+                <button type="button" onclick="saveRows()">Save</button>
             </form>
         </div>
         <div id="results"></div>
