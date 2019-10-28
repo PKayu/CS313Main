@@ -31,7 +31,7 @@ try
     $user_stmt->execute(array(':id' => $id));
     $_SESSION["user"] = $user_stmt->fetchAll(PDO::FETCH_ASSOC);
     echo 'Load User<br/>';
-    $debt_stmt = $db->prepare('SELECT * FROM "Snowball"."Debt" WHERE fk_user_id=\':id\'');
+    $debt_stmt = $db->prepare('SELECT * FROM "Snowball"."Debt" WHERE fk_user_id=:id');
     $debt_stmt->execute(array(':id' => $id));
     $_SESSION["debt"] = $debt_stmt->fetchAll(PDO::FETCH_ASSOC);
     echo 'Load Debt<br/>';
