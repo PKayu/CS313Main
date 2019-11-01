@@ -5,6 +5,13 @@ try
 {
     $decoded = json_decode($_POST['arrayDebt'],true);
     $user_id = $_SESSION['user'][0]["user_id"];
+    $addit_funds = floatval($_POST['addit_funds']);
+    $afQuery = 'UPDATE "Snowball"."Users" SET addit_funds = :additFunds WHERE user_id = :userid';
+    $userStatement = $db->prepare($afQuery);
+    $userStatement->bindValue(':userid', $user_id);
+    $userStatement->bindValue(':additFunds', $addit_funds);
+    $userStatement->execute();
+    
     foreach ($decoded as $debt){
         $debt_id = $debt['debt_id'];
         $debt_name = $debt['debt_name'];

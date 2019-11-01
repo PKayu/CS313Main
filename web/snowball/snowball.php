@@ -44,7 +44,7 @@ catch (PDOException $ex)
         <div>
             <form action="save.php" method="post">
                 <label>Additional Funds</label>
-                <input id="addit_funds" type="text" value=0><br/>
+                <input id="addit_funds" type="text" value=<?php echo $_SESSION["user"][0]["addit_funds"]; ?> name="addit_funds"><br/>
                 <table id="debtTable">
                     <tr><th>Debt Name</th><th>Minimum Payment</th><th>Remaining Debt</th><th>Remove</th></tr>
                     <?php
