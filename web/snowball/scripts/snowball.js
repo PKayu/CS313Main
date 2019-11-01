@@ -88,13 +88,14 @@ function saveRows() {
         aDebt.push(debt);
     }
 
+    var additFunds = document.getElementById("addit_funds").value;
     var debtRows = JSON.stringify(aDebt);
     $.ajax(
         {
             url: 'save.php',
             type: "post",
             async:true,
-            data: {arrayDebt: debtRows},
+            data: {arrayDebt: debtRows, addit_funds: additFunds},
             success: function(data) {
                 document.getElementById("message").innerHTML = "Saved Successfully";
             },

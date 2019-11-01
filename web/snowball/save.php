@@ -11,7 +11,7 @@ try
     $userStatement->bindValue(':userid', $user_id);
     $userStatement->bindValue(':additFunds', $addit_funds);
     $userStatement->execute();
-    
+
     foreach ($decoded as $debt){
         $debt_id = $debt['debt_id'];
         $debt_name = $debt['debt_name'];
